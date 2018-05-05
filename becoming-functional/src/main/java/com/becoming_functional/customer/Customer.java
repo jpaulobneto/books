@@ -1,4 +1,4 @@
-package com.java_playground.customer;
+package com.becoming_functional.customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,48 +20,38 @@ public class Customer {
     public B call(A1 in1);
   }
 
-  static private class CustomerAddress implements Function1<Customer, String> {
-    public String call(Customer customer) { return customer.address; }
-  }
-
-  static private class CustomerDomain implements Function1<Customer, String> {
-    public String call(Customer customer) { return customer.domain; }
-  }
-
-  static private class CustomerName implements Function1<Customer, String> {
-    public String call(Customer customer) { return customer.name; }
-  }
-
-  static private class CustomerPrimaryContact implements Function1<Customer, String> {
-    public String call(Customer customer) { return customer.primaryContact; }
-  }
-
-  static private class CustomerState implements Function1<Customer, String> {
-    public String call(Customer customer) { return customer.state; }
-  }
-
   static private class CustomerAsCustomer implements Function1<Customer, Customer> {
     public String call(Customer customer) { return customer; }
   }
 
   public static List<String> getEnabledCustomerAddresses() {
-    return Customer.getEnabledCustomerField(new CustomerAddress());
+    return Customer.getEnabledCustomerField(new Function1<Customer,String>() {
+      public String call(Customer customer) { return customer.address; }
+    });
   }
 
   public static List<String> getEnabledCustomerDomains() {
-    return Customer.getEnabledCustomerField(new CustomerDomain());
+    return Customer.getEnabledCustomerField(new Function1<Customer,String>() {
+      public String call(Customer customer) { return customer.domain; }
+    });
   }
 
   public static List<String> getEnabledCustomerNames() {
-    return Customer.getEnabledCustomerField(new CustomerName());
+    return Customer.getEnabledCustomerField(new Function1<Customer,String>() {
+      public String call(Customer customer) { return customer.name; }
+    });
   }
 
   public static List<String> getEnabledCustomerPrimaryContacts() {
-    return Customer.getEnabledCustomerField(new CustomerPrimaryContact());
+    return Customer.getEnabledCustomerField(new Function1<Customer,String>() {
+      public String call(Customer customer) { return customer.primaryContact; }
+    });
   }
 
   public static List<String> getEnabledCustomerStates() {
-    return Customer.getEnabledCustomerField(new CustomerState());
+    return Customer.getEnabledCustomerField(new Function1<Customer,String>() {
+      public String call(Customer customer) { return customer.state; }
+    });
   }
 
   public static <B> List<B> getEnabledCustomerField(Function1<Customer, B> func) {
