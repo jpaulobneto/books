@@ -12,3 +12,7 @@
 
 ![Imagem 2.1](notes/images/Screenshot from 2018-05-04 20-41-54.png)
 ![Imagem 2.2](notes/images/Screenshot from 2018-05-04 20-42-00.png)
+
+### Closures
+
+- Closures are much like lambda's except they reference variables outside the scope of the function (the *body* references a variable that neither exists in the *body* or the *parameter list*. )

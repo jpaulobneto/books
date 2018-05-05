@@ -54,6 +54,14 @@ public class Customer {
     });
   }
 
+  public static List<String> getEnabledCustomerSomeoneEmail(final String someone) {
+    return Customer.getEnabledCustomerField(new Function1<Customer,String>() {
+      public String call(Customer customer) {
+        return someone + "@" + customer.domain;
+      }
+    });
+  }
+
   public static <B> List<B> getEnabledCustomerField(Function1<Customer, B> func) {
     ArrayList<B> outList = new ArrayList<B>();
     for(Customer customer : Customer.allCustomers) {
